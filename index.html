@@ -1,1 +1,330 @@
-Aqui sera o News!
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
+    <title>#_4root | News — Cibersegurança</title>
+
+    <!-- ===== SEO / METATAGS OFICIAIS 4root.com.br (adaptadas ao news) ===== -->
+    <meta name="description"
+          content="#_4root news — coleta, filtragem e briefing diário de cibersegurança da comunidade #_4root. Notícias de fontes nacionais e internacionais em tempo real, ranqueamento de ameaças e PDF por ciclo — sem geração por IA.">
+    <meta name="keywords"
+          content="cibersegurança, hacking, notícias de segurança, threat intelligence, CTI, OSINT, ransomware, malware, CVE, pentesting, comunidade de hackers, #_4root">
+    <meta name="author" content="#_4root Community">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="canonical" href="https://news.4root.com.br/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="#_4root">
+    <meta property="og:title" content="#_4root | News — Cibersegurança">
+    <meta property="og:description"
+          content="#_4root news — coleta, filtragem e briefing diário de cibersegurança da comunidade #_4root. Notícias em tempo real, ranqueamento de ameaças e PDF por ciclo — sem geração por IA.">
+    <meta property="og:url" content="https://news.4root.com.br/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/4-root/Files/refs/heads/main/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="#_4root | News — Cibersegurança">
+    <meta name="twitter:description"
+          content="#_4root news — coleta, filtragem e briefing diário de cibersegurança da comunidade #_4root — sem geração por IA.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/4-root/Files/refs/heads/main/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "#_4root",
+      "url": "https://4root.com.br/",
+      "logo": "https://4root.com.br/static/favicon.png",
+      "sameAs": [
+        "https://discord.gg/Aw4F6qXS4N",
+        "https://www.linkedin.com/company/4root",
+        "https://www.youtube.com/@4rootcommunity",
+        "https://www.instagram.com/4root_community"
+      ],
+      "description": "Somos Uma comunidade dedicada ao hacking ético, pentesting e cibersegurança. Exploramos sistemas, resolvemos CTFs e compartilhamos conhecimento."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "#_4root News",
+      "url": "https://news.4root.com.br/",
+      "inLanguage": "pt-BR",
+      "publisher": { "@type": "Organization", "name": "#_4root", "url": "https://4root.com.br/" },
+      "description": "Coleta, filtragem e briefing diário de cibersegurança da comunidade #_4root — sem geração por IA."
+    }
+    </script>
+
+    <link rel="icon" type="image/png" href="static/favicon.png">
+    <noscript>
+        <style>.animate-on-scroll{opacity:1 !important;transform:none !important}</style>
+        <meta http-equiv="refresh" content="0;url=data/news.json">
+    </noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css?v=8">
+</head>
+<body class="grain-overlay">
+    <div id="scroll-progress" aria-hidden="true"></div>
+    <div id="cyber-cursor" aria-hidden="true"><div class="cursor-glitch-effect"></div></div>
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+
+    <!-- ===== NAVBAR OFICIAL 4root.com.br (+ News) ===== -->
+    <header class="navbar" id="navbar">
+        <nav class="nav-inner">
+            <a href="/" class="nav-logo">
+                <span class="font-qb text-hash">#</span><span class="font-qb text-underscore">_</span>
+                <span class="neon-text font-sora text-4">4</span>
+                <span class="font-qb text-root">root</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="https://4root.com.br/" class="nav-link">Home<span class="underline"></span></a></li>
+                <li><a href="https://4root.com.br/#comunidade" class="nav-link">Comunidade<span class="underline"></span></a></li>
+                <li><a href="https://4root.com.br/#eventos" class="nav-link">Eventos<span class="underline"></span></a></li>
+                <li><a href="https://4root.com.br/#youtube" class="nav-link">YouTube<span class="underline"></span></a></li>
+                <li><a href="https://4root.com.br/#recursos" class="nav-link">Networks<span class="underline"></span></a></li>
+                <li><a href="https://4root.com.br/#desafios" class="nav-link">Desafios<span class="underline"></span></a></li>
+                <li><a href="https://academy.4root.com.br" class="nav-link">Academy<span class="underline"></span></a></li>
+                <li><a href="/" class="nav-link active">News<span class="underline"></span></a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <a href="https://4root.com.br/">Home</a>
+        <a href="https://4root.com.br/#comunidade">Comunidade</a>
+        <a href="https://4root.com.br/#eventos">Eventos</a>
+        <a href="https://4root.com.br/#youtube">YouTube</a>
+        <a href="https://4root.com.br/#recursos">Networks</a>
+        <a href="https://4root.com.br/#desafios">Desafios</a>
+        <a href="https://academy.4root.com.br">Academy</a>
+        <a href="/" class="active">News</a>
+        <div class="mobile-menu-socials" aria-label="Redes da comunidade">
+            <a href="https://discord.gg/Aw4F6qXS4N" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3.54 5.61c-3.22.96-6.22.88-8.92 0-.5-.15-.83.42-.56.86a7.54 7.54 0 0 0 5.02 2.75 7.54 7.54 0 0 0 5.02-2.75c.27-.44-.06-1.01-.56-.86Z"/><path d="M18.5 3h-13A2.5 2.5 0 0 0 3 5.5v13A2.5 2.5 0 0 0 5.5 21h13a2.5 2.5 0 0 0 2.5-2.5v-13A2.5 2.5 0 0 0 18.5 3Z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@4rootcommunity" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/4root" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.instagram.com/4root_community" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <main class="page-main">
+    <!-- ===== HERO (design oficial academy.4root.com.br + video de fundo) ===== -->
+    <section class="hero-section scanlines">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto"
+               aria-hidden="true" tabindex="-1">
+            <source src="static/videos/hero-bg.mp4?v=6" type="video/mp4">
+        </video>
+        <div class="hero-video-shade" aria-hidden="true"></div>
+        <div class="hero-gradient"></div>
+        <div class="hero-content">
+            <div class="hero-status">
+                <span class="dot neon-glow caret-blink"></span>
+                <span id="typewriter">root@4root:~$ news --collect</span>
+            </div>
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <h1 class="hero-title glitch" aria-label="#_4root news">
+                        <span class="line">
+                            <span class="line2-inner" data-text="#_4root">
+                                <span class="font-qb text-hash">#</span><span class="font-qb text-underscore">_</span>
+                                <span class="neon-text font-sora text-4">4</span>
+                                <span class="font-qb text-root">root</span>
+                            </span>
+                        </span>
+                        <span class="line">
+                            <span class="line-inner" data-text="news">news</span>
+                        </span>
+                    </h1>
+                    <div class="hero-motto">
+                        <span class="motto-bracket">[</span>
+                        break <span class="neon-text">//</span> learn <span class="neon-text">//</span> share
+                        <span class="motto-bracket">]</span>
+                    </div>
+                    <div class="hero-ctas">
+                        <a href="#news-wide" class="cta-primary" id="btn-read" data-scroll="#news-wide">ler noticias</a>
+                        <button onclick="runWorkflow()" class="cta-secondary" id="btn-workflow">
+                            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            executar workflow
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-subtitle-wrap" id="hero-subtitle-wrap">
+                        <p class="hero-subtitle">Coleta, filtragem e briefing di&aacute;rio de ciberseguran&ccedil;a &mdash; feeds RSS e Google News em paralelo. <b>Sem gera&ccedil;&atilde;o por IA</b>.</p>
+                        <p class="hero-proximity-text" aria-hidden="true">Coleta, filtragem e briefing diario de ciberseguranca - feeds RSS e Google News em paralelo. Sem geracao por IA. 0x726f6f74</p>
+                    </div>
+                    <div class="hero-sched">
+                        <span class="sched-dot off" id="sched-dot"></span>
+                        <span id="sched-text">carregando status da coleta&hellip;</span>
+                    </div>
+                    <p class="hero-notice"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v6"/></svg> <span>Verifique as disponibilidades das fontes na bolha neon ao lado &mdash; clique para abrir. Caso de sugest&otilde;es: <a class="notice-link" href="https://forms.gle/4root-news-fontes" target="_blank" rel="noopener noreferrer">google forms</a>.</span></p>
+
+                    <!-- Stats (abaixo do hero-notice) -->
+                    <div class="stats-row hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-number neon-text" id="stat-articles">&mdash;</div>
+                            <div class="stat-label">Not&iacute;cias Coletadas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number neon-text" id="stat-sources">&mdash;</div>
+                            <div class="stat-label">Fontes Monitoradas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number neon-text" id="stat-window">&mdash;</div>
+                            <div class="stat-label">Janela Temporal</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number neon-text" id="stat-cycles">&mdash;</div>
+                            <div class="stat-label">Ciclos Salvos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#news-wide" class="hero-scroll-indicator bounce-arrow" data-scroll="#news-wide" aria-label="Ir para as not&iacute;cias">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path>
+            </svg>
+        </a>
+    </section>
+
+    <div class="dashboard">
+        <!-- Workflow Progress -->
+        <div id="workflow-panel" class="workflow-panel" style="display:none">
+            <h3>Pipeline de Workflow</h3>
+            <div class="workflow-steps">
+                <div class="wstep" id="ws-01">01 - Coleta de Feeds</div>
+                <div class="wstep" id="ws-02">02 - Desduplica&ccedil;&atilde;o e Ranqueamento</div>
+                <div class="wstep" id="ws-03">03 - PDF do Ciclo</div>
+            </div>
+            <div id="workflow-log" class="workflow-log"></div>
+        </div>
+
+        <!-- EXPORT: botao de export + ciclos recentes (acima das noticias) -->
+        <section class="export-bar animate-on-scroll" id="export">
+            <div class="export-main">
+                <a href="#noticias" class="btn-neon export-btn" id="btn-export">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+                    baixar pdf do ciclo
+                </a>
+                <p class="export-hint">Relat&oacute;rio completo com <b>todos</b> os artigos ranqueados do &uacute;ltimo ciclo &mdash; <span class="font-mono" id="pdf-name">carregando&hellip;</span></p>
+            </div>
+            <div class="export-sessions" id="sessions-wrap" hidden>
+                <p class="hero-sessions-label">// ciclos recentes &mdash; clique na coleta para baixar o pdf</p>
+                <div class="sessions-list" id="sessions-list"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notícias — cards estilo academy.4root.com.br (seção LARGA: 4 cards por linha) -->
+    <section class="section section-news" id="noticias">
+        <div class="section-inner">
+            <div class="section-label animate-on-scroll"><span class="label-bar"></span><span>// Ultimas Noticias &mdash; 4ROOT &mdash; <strong class="label-date" id="label-date">&hellip;</strong></span></div>
+        </div>
+
+        <div class="section-inner">
+            <div class="empty-state neon-glow animate-on-scroll" id="empty-state" hidden>
+                <p>Nenhuma not&iacute;cia carregada ainda.</p>
+                <p>A coleta autom&aacute;tica roda a cada 3 horas &mdash; aguarde o pr&oacute;ximo ciclo ou clique em <strong class="neon-text">executar workflow</strong> no topo da p&aacute;gina.</p>
+            </div>
+        </div>
+        <!-- grid das noticias: preenchido pelo app.js a partir de data/news.json -->
+        <div id="news-area"></div>
+    </section>
+    </main>
+
+    <!-- ===== FOOTER OFICIAL academy.4root.com.br ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid animate-on-scroll">
+                <div class="footer-brand">
+                    <span class="nav-logo"><span class="nav-logo-row"><span class="font-qb text-hash">#</span><span class="font-qb text-underscore">_</span><span class="neon-text font-sora text-4">4</span><span class="font-qb text-root">root</span></span></span>
+                    <p>Coleta, filtragem e briefing di&aacute;rio de ciberseguran&ccedil;a da comunidade #_4root &mdash; feeds RSS e Google News em paralelo, ranqueamento de amea&ccedil;as e PDF por ciclo, sem gera&ccedil;&atilde;o por IA.</p>
+                </div>
+                <div class="footer-socials" aria-label="Redes da comunidade"><a href="https://discord.gg/Aw4F6qXS4N" target="_blank" rel="noopener noreferrer" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24"><path d="M8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3.54 5.61c-3.22.96-6.22.88-8.92 0-.5-.15-.83.42-.56.86a7.54 7.54 0 0 0 5.02 2.75 7.54 7.54 0 0 0 5.02-2.75c.27-.44-.06-1.01-.56-.86Z"/><path d="M18.5 3h-13A2.5 2.5 0 0 0 3 5.5v13A2.5 2.5 0 0 0 5.5 21h13a2.5 2.5 0 0 0 2.5-2.5v-13A2.5 2.5 0 0 0 18.5 3Z"/></svg></a><a href="https://www.youtube.com/@4rootcommunity" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a><a href="https://www.linkedin.com/company/4root" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://www.instagram.com/4root_community" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a></div>
+            </div>
+            <div class="footer-bottom animate-on-scroll">
+                <span class="footer-copyright">&copy; <span class="js-year">2026</span> #_4root &mdash; break <span class="neon-text">//</span> learn <span class="neon-text">//</span> share</span>
+                <span class="font-mono">news.4root.com.br &middot; coleta autom&aacute;tica <span id="footer-sched">&hellip;</span></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BOLHA DE STATUS DOS FEEDS (visual RootBot, modal informativo) ===== -->
+    <svg class="goo-defs" width="0" height="0" focusable="false" aria-hidden="true">
+        <defs>
+            <filter id="r4-goo" color-interpolation-filters="sRGB">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b" />
+                <feColorMatrix in="b" mode="matrix"
+                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" result="g" />
+            </filter>
+        </defs>
+    </svg>
+    <div id="bot-goo" aria-hidden="true">
+        <div class="bot-float">
+            <div class="bot-trail"></div>
+            <div class="bot-blob"></div>
+        </div>
+    </div>
+    <button id="bot-dot" aria-label="Status dos feeds" title="Status dos Feeds &mdash; clique para ver"></button>
+    <div id="bot-tip" aria-hidden="true">status dos feeds &mdash; clique para ver</div>
+
+    <section id="bot-panel" role="dialog" aria-label="Status dos Feeds" aria-hidden="true">
+        <header class="bot-head">
+            <span class="bot-avatar" aria-hidden="true">
+                <img src="static/img/logo.svg" alt="">
+            </span>
+            <div class="bot-head-t">
+                <strong>Status dos Feeds</strong>
+                <small><span class="bot-status-dot" aria-hidden="true"></span> <span id="bot-summary">carregando&hellip;</span></small>
+            </div>
+            <button id="bot-close" aria-label="Fechar painel" title="Fechar [esc]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <path d="M18 6L6 18M6 6l12 12"></path>
+                </svg>
+            </button>
+        </header>
+        <div class="bot-body" id="bot-msgs" aria-live="polite">
+            <div class="bot-empty">Carregando status das fontes&hellip;</div>
+        </div>
+        <div class="bot-chips" id="bot-chips">
+            <span class="bot-chip" id="chip-ok">&mdash;</span>
+            <span class="bot-chip" id="chip-err">&mdash;</span>
+            <span class="bot-chip" id="chip-total">&mdash;</span>
+            <a class="bot-chip bot-chip-link" href="https://forms.gle/4root-news-fontes" target="_blank" rel="noopener noreferrer" title="Sugerir novas fontes via Google Forms">sugerir fonte <span class="neon-text">&rarr;</span> google forms</a>
+        </div>
+    </section>
+
+    <!-- ===== API DO NEWS (Replit) ======================================
+         Flask local / acesso direto pela API: deixe vazio ('').
+         Publicando no GitHub Pages: coloque aqui a URL do seu app
+         (ex.: 'https://news-4root.replit.app'). O JS busca os dados
+         em NEWS_API_BASE + '/data/news.json' e envia o botao para
+         NEWS_API_BASE + '/collect' (PDFs em /export).
+         ================================================================== -->
+    <script>window.NEWS_API_BASE = '';</script>
+    <script src="static/js/app.js?v=10"></script>
+</body>
+</html>
