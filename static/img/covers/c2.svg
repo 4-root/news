@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 38 21">
+  <defs>
+    <pattern id="g" width="2" height="2" patternUnits="userSpaceOnUse">
+      <path d="M2 0H0V2" fill="none" stroke="#0f2413" stroke-width=".08"/>
+    </pattern>
+    <radialGradient id="v" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#071408"/><stop offset="100%" stop-color="#040704"/>
+    </radialGradient>
+  </defs>
+  <rect width="38" height="21" fill="url(#v)"/>
+  <rect width="38" height="21" fill="url(#g)"/>
+  <g transform="translate(0,0)" fill="none" stroke="#00ff41" stroke-opacity=".22" stroke-width=".14">
+    <path d="M10 22 a8 8 0 0 1 4-14 a9 9 0 0 1 17 3 a6 6 0 0 1 1 11 z M18 18 v6 M18 27 v.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="none" stroke="#00ff41" stroke-opacity=".55" stroke-width=".16">
+    <path d="M10 22 a8 8 0 0 1 4-14 a9 9 0 0 1 17 3 a6 6 0 0 1 1 11 z M18 18 v6 M18 27 v.5" transform="translate(.4,-.35)"/>
+  </g>
+  <text x="1.6" y="19.2" font-family="monospace" font-size="1.15" letter-spacing=".45" fill="#00ff41" fill-opacity=".5">#_4root // RANSOMWARE</text>
+  <rect x="0" y="0" width="38" height="21" fill="none" stroke="#00ff41" stroke-opacity=".12" stroke-width=".2"/>
+</svg>
