@@ -131,44 +131,57 @@
 
 
   /* ==============================================
-     1. NAVBAR: scroll background (oficial)
+     1. NAVBAR: scroll background (valores exatos academy.4root.com.br)
      ============================================== */
   var navbar = document.getElementById('navbar');
   var lastY = 0;
 
   function updateNav() {
     if (!navbar) return;
-    if (window.scrollY > 60) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-    /* some ao rolar para baixo, volta ao rolar para cima */
-    var diff = window.scrollY - lastY;
-    if (window.scrollY > 320 && diff > 4) {
+    var y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 24);
+    var overlay = document.getElementById('mobile-menu');
+    var menuOpen = !!(overlay && overlay.classList.contains('open'));
+    if (menuOpen || y <= 140) {
+      /* topo da pagina ou menu aberto: sempre visivel */
+      navbar.classList.remove('nav-hidden');
+    } else if (y > lastY + 4) {
+      /* desceu (margem p/ ignorar tremidas): esconde */
       navbar.classList.add('nav-hidden');
-    } else if (diff < -4 || window.scrollY < 320) {
+    } else if (y < lastY - 4) {
+      /* subiu de verdade: mostra */
       navbar.classList.remove('nav-hidden');
     }
-    lastY = window.scrollY;
+    /* deltas pequenos nao mudam o estado (fim da animacao smooth) */
+    lastY = y;
   }
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
   /* ==============================================
-     2. MOBILE MENU (oficial)
+     2. MOBILE MENU (comportamento identico ao academy.4root.com.br)
      ============================================== */
   var mobileBtn = document.getElementById('mobile-menu-btn');
   var mobileMenu = document.getElementById('mobile-menu');
 
   if (mobileBtn && mobileMenu) {
     mobileBtn.addEventListener('click', function () {
-      mobileMenu.classList.toggle('open');
+      var open = mobileMenu.classList.toggle('open');
+      mobileBtn.setAttribute('aria-expanded', open);
     });
-    mobileMenu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
+    /* fecha ao clicar em qualquer link ou no proprio overlay */
+    mobileMenu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A' || e.target === mobileMenu) {
         mobileMenu.classList.remove('open');
-      });
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    /* fecha com a tecla Escape */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        mobileMenu.classList.remove('open');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
@@ -761,20 +774,15 @@
         var empty = document.getElementById('empty-state');
         if (empty) {
           empty.hidden = false;
-         var p2 = empty.querySelector('p:last-child');
-          if (p2) p2.innerHTML = 'N&atilde;o consegui carregar <b class="font-mono">'
-            + _esc(API + '/data/news.json') + '</b> (' + _esc(err.message)
-            + '). Verifique se a API do News (Replit) est&aacute; no ar e se '
-            + '<b class="font-mono">NEWS_API_BASE</b> na index.html aponta para a URL dela.';
-            + _esc(API + '') + '</b> (' + _esc(err.message)
-            + ''
-            + '';
-        }
+          var p2 = empty.querySelector('p:last-child');
+          if (p2) p2.innerHTML = 'N&atilde;o consegui falar com a API do News ('
+            + _esc(err.message) + '). Verifique se o backend est&aacute; no ar.';
+        }
         var txt = document.getElementById('sched-text');
         if (txt) txt.innerHTML = 'Coleta autom&aacute;tica: dados indispon&iacute;veis';
         var name = document.getElementById('pdf-name');
         if (name) name.textContent = 'indisponivel';
-        showToast('Sem resposta da API do News (' + (API || 'mesma origem') + ')', 'fail', 8000);
+        showToast('Sem resposta da API do News', 'fail', 8000);
       });
   })();
 
