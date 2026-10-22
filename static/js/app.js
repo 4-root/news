@@ -761,12 +761,10 @@
         var empty = document.getElementById('empty-state');
         if (empty) {
           empty.hidden = false;
-          var p2 = empty.querySelector('p:last-child');
-          if (p2) p2.innerHTML = 'N&atilde;o consegui carregar <b class="font-mono">'
-            + _esc(API + '') + '</b> (' + _esc(err.message)
-            + ''
-            + '';
-        }
+         var p2 = empty.querySelector('p:last-child');
+         if (p2) {
+             p2.innerHTML = '';
+         }
         var txt = document.getElementById('sched-text');
         if (txt) txt.innerHTML = 'Coleta autom&aacute;tica: dados indispon&iacute;veis';
         var name = document.getElementById('pdf-name');
