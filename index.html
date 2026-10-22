@@ -68,7 +68,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css?v=8">
+    <link rel="stylesheet" href="static/css/style.css?v=9">
 </head>
 <body class="grain-overlay">
     <div id="scroll-progress" aria-hidden="true"></div>
@@ -104,6 +104,7 @@
         </nav>
     </header>
 
+    <!-- menu mobile: estrutura/comportamento identicos ao academy.4root.com.br -->
     <div class="mobile-menu-overlay" id="mobile-menu">
         <a href="https://4root.com.br/">Home</a>
         <a href="https://4root.com.br/#comunidade">Comunidade</a>
@@ -113,20 +114,6 @@
         <a href="https://4root.com.br/#desafios">Desafios</a>
         <a href="https://academy.4root.com.br">Academy</a>
         <a href="/" class="active">News</a>
-        <div class="mobile-menu-socials" aria-label="Redes da comunidade">
-            <a href="https://discord.gg/Aw4F6qXS4N" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3.54 5.61c-3.22.96-6.22.88-8.92 0-.5-.15-.83.42-.56.86a7.54 7.54 0 0 0 5.02 2.75 7.54 7.54 0 0 0 5.02-2.75c.27-.44-.06-1.01-.56-.86Z"/><path d="M18.5 3h-13A2.5 2.5 0 0 0 3 5.5v13A2.5 2.5 0 0 0 5.5 21h13a2.5 2.5 0 0 0 2.5-2.5v-13A2.5 2.5 0 0 0 18.5 3Z"/></svg>
-            </a>
-            <a href="https://www.youtube.com/@4rootcommunity" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/4root" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="https://www.instagram.com/4root_community" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-            </a>
-        </div>
     </div>
 
     <main class="page-main">
@@ -179,7 +166,7 @@
                         <span class="sched-dot off" id="sched-dot"></span>
                         <span id="sched-text">carregando status da coleta&hellip;</span>
                     </div>
-                    <p class="hero-notice"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v6"/></svg> <span>Verifique as disponibilidades das fontes na bolha neon ao lado &mdash; clique para abrir. Caso de sugest&otilde;es: <a class="notice-link" href="https://forms.gle/4root-news-fontes" target="_blank" rel="noopener noreferrer">google forms</a>.</span></p>
+                    <p class="hero-notice"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v6"/></svg> <span>Verifique as disponibilidades das fontes na bolha neon ao lado &mdash; clique para abrir. Caso de sugest&otilde;es: <a class="notice-link" href="https://forms.gle/UeUrUa8bx36sz8ps7" target="_blank" rel="noopener noreferrer">google forms</a>.</span></p>
 
                     <!-- Stats (abaixo do hero-notice) -->
                     <div class="stats-row hero-stats">
@@ -313,18 +300,29 @@
             <span class="bot-chip" id="chip-ok">&mdash;</span>
             <span class="bot-chip" id="chip-err">&mdash;</span>
             <span class="bot-chip" id="chip-total">&mdash;</span>
-            <a class="bot-chip bot-chip-link" href="https://forms.gle/4root-news-fontes" target="_blank" rel="noopener noreferrer" title="Sugerir novas fontes via Google Forms">sugerir fonte <span class="neon-text">&rarr;</span> google forms</a>
+            <a class="bot-chip bot-chip-link" href="https://forms.gle/UeUrUa8bx36sz8ps7" target="_blank" rel="noopener noreferrer" title="Sugerir novas fontes via Google Forms">sugerir fonte <span class="neon-text">&rarr;</span> google forms</a>
         </div>
     </section>
 
-    <!-- ===== API DO NEWS (Replit) ======================================
-         Flask local / acesso direto pela API: deixe vazio ('').
-         Publicando no GitHub Pages: coloque aqui a URL do seu app
-         (ex.: 'https://news-4root.replit.app'). O JS busca os dados
-         em NEWS_API_BASE + '/data/news.json' e envia o botao para
-         NEWS_API_BASE + '/collect' (PDFs em /export).
+    <!-- ===== API DO NEWS (endereco OFUSCADO) ===========================
+         A URL real NAO fica em texto puro no HTML: ela e reconstruida
+         em tempo de execucao (fragmentos -> base64 -> XOR -> inversao).
+         O JS (app.js) consome window.NEWS_API_BASE normalmente.
+         Para trocar o endereco, gere novos fragmentos com o script
+         tools/obfuscate_api.py e substitua o array _f abaixo.
          ================================================================== -->
-    <script>window.NEWS_API_BASE = 'https://backend-4-root-news-api--cyberdefalert.replit.app';</script>
-    <script src="static/js/app.js?v=10"></script>
+    <script>
+    (function () {
+      var _k = '#_4root';
+      var _f = ['Uy9VXBsGGFM6RlwbHRFPPlIXC', 'x0RQSZXX0IGBEJyRwUKAVlXMF', 'sAQltZRzFRGQwOFgxwDgEfGwBL'];
+      var _s = atob(_f.join(''));
+      var _o = '';
+      for (var i = 0; i < _s.length; i++) {
+        _o += String.fromCharCode(_s.charCodeAt(i) ^ _k.charCodeAt(i % _k.length));
+      }
+      window.NEWS_API_BASE = _o.split('').reverse().join('');
+    })();
+    </script>
+    <script src="static/js/app.js?v=11"></script>
 </body>
 </html>
