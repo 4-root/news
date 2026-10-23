@@ -487,6 +487,17 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   cursor: pointer;
 }
 
+/* iguala o gatilho "Produtos" aos demais itens do menu:
+   o font:inherit acima sobrescreve o .nav-link (mesma specificity, vem depois)
+   e fazia o texto aparecer na fonte do body (1rem) em vez de 0.75rem */
+.nav-link.nav-drop-btn {
+  font-size: 0.75rem;
+  font-weight: inherit;
+  line-height: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
 .nav-drop-btn .caret {
   width: .65rem;
   height: .65rem;
@@ -536,6 +547,8 @@ body { animation: page-in .5s var(--ease-out) backwards; }
 .nav-drop:focus-within .caret { transform: rotate(180deg); }
 
 .nav-drop-menu a {
+  position: relative;
+  overflow: hidden;
   padding: .6rem 1.15rem;
   font-size: .72rem;
   text-transform: uppercase;
@@ -551,6 +564,37 @@ body { animation: page-in .5s var(--ease-out) backwards; }
 }
 
 .nav-drop-menu a.active { color: var(--neon); }
+
+/* glitch nos itens do droplist (mesmo efeito do botao "veja o proximo
+   evento" do 4root.com.br: keyframes glitch-skew/before/after ja existentes) */
+.nav-drop-menu a::before,
+.nav-drop-menu a::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--neon);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 1.15rem;
+  pointer-events: none;
+}
+
+.nav-drop-menu a::before {
+  text-shadow: 2px 0 #ff0040;
+  z-index: 1;
+  animation: glitch-before 8s steps(2, end) infinite;
+}
+
+.nav-drop-menu a::after {
+  text-shadow: -2px 0 #00e5ff;
+  z-index: 2;
+  animation: glitch-after 8s steps(2, end) infinite;
+}
 
 .mobile-menu-btn {
   display: flex;
@@ -874,6 +918,40 @@ body { animation: page-in .5s var(--ease-out) backwards; }
 
 .cta-primary:hover, .btn-neon:hover { box-shadow: 0 0 25px rgba(0,255,65,.5); }
 
+/* glitch do botao "veja o proximo evento" do 4root.com.br, replicado
+   no "ler noticias" (keyframes glitch-skew/before/after ja existentes) */
+.cta-primary.glitch {
+  animation: glitch-skew 8s steps(1) infinite;
+}
+
+.cta-primary.glitch::before,
+.cta-primary.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--neon);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.cta-primary.glitch::before {
+  text-shadow: 2px 0 #ff0040;
+  z-index: 1;
+  animation: glitch-before 8s steps(2, end) infinite;
+}
+
+.cta-primary.glitch::after {
+  text-shadow: -2px 0 #00e5ff;
+  z-index: 2;
+  animation: glitch-after 8s steps(2, end) infinite;
+}
+
 .cta-primary:disabled { opacity: .55; cursor: wait; }
 
 .cta-secondary {
@@ -1047,6 +1125,7 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   color: var(--muted);
   margin-bottom: .55rem;
 }
+
 /* ================= CARDS DE NOTICIA (course-card oficial academy) ================= */
 .courses-grid {
   display: grid;
