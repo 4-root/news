@@ -735,40 +735,59 @@
   };
 
   (function loadData() {
-    fetch(API + '/data/news.json', { cache: 'no-store' })
-      .then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(function (d) {
-        NEWS.data = d;
-        window.__NEWS_DATA = d;
-        /* a API manda a propria base: no Pages o JSON volta com
-           api_base preenchido e PDFs/botao apontam para o Replit */
-        if (d.api_base) API = String(d.api_base).replace(/\/+$/, '');
-        var ld = document.getElementById('label-date');
-        if (ld) ld.textContent = d.date_full || '';
-        renderStats(d);
-        renderSched(d);
-        renderExport(d);
-        renderBubble(d);
-        renderCards(d);
-        armCollectCountdown(d.collect_ready_in_seconds || 0);
-      })
-      .catch(function (err) {
-        var empty = document.getElementById('empty-state');
-        if (empty) {
-          empty.hidden = false;
-          var p2 = empty.querySelector('p:last-child');
-          if (p2) p2.innerHTML = 'N&atilde;o consegui falar com a API do News ('
-            + _esc(err.message) + '). Verifique se o backend est&aacute; no ar.';
-        }
-        var txt = document.getElementById('sched-text');
-        if (txt) txt.innerHTML = 'Coleta autom&aacute;tica: dados indispon&iacute;veis';
-        var name = document.getElementById('pdf-name');
-        if (name) name.textContent = 'indisponivel';
-        showToast('Sem resposta da API do News', 'fail', 8000);
-      });
-  })();
+    /* Retry automatico: o backend no Replit pode estar acordando (cold
+       start) — a 1a requisicao falha e as seguintes vao. So mostra erro
+       se TODAS as tentativas falharem. */
+    var MAX_TRIES = 3;
+    var tries = 0;
 
-})();
+    function _load() {
+      tries++;
+      fetch(API + '/data/news.json', { cache: 'no-store' })
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function (d) {
+          NEWS.data = d;
+          window.__NEWS_DATA = d;
+          /* a API manda a propria base: no Pages o JSON volta com
+             api_base preenchido e PDFs/botao apontam para o Replit */
+          if (d.api_base) API = String(d.api_base).replace(/\/+$/, '');
+          var ld = document.getElementById('label-date');
+          if (ld) ld.textContent = d.date_full || '';
+          var empty = document.getElementById('empty-state');
+          if (empty) empty.hidden = true; /* esconde erro de tentativa anterior */
+          renderStats(d);
+          renderSched(d);
+          renderExport(d);
+          renderBubble(d);
+          renderCards(d);
+          armCollectCountdown(d.collect_ready_in_seconds || 0);
+        })
+        .catch(function (err) {
+          if (tries < MAX_TRIES) {
+            var tx = document.getElementById('sched-text');
+            if (tx) tx.innerHTML = 'Conectando na API&hellip; tentativa '
+              + (tries + 1) + ' de ' + MAX_TRIES + ' (backend pode estar acordando)';
+            setTimeout(_load, tries === 1 ? 4000 : 10000);
+            return;
+          }
+          var empty = document.getElementById('empty-state');
+          if (empty) {
+            empty.hidden = false;
+            var p2 = empty.querySelector('p:last-child');
+            if (p2) p2.innerHTML = 'N&atilde;o consegui falar com a API do News ('
+              + _esc(err.message) + ') ap&oacute;s ' + MAX_TRIES + ' tentativas. '
+              + 'O backend pode estar acordando &mdash; recarregue a p&aacute;gina '
+              + 'em alguns segundos (F5).';
+          }
+          var txt = document.getElementById('sched-text');
+          if (txt) txt.innerHTML = 'Coleta autom&aacute;tica: dados indispon&iacute;veis';
+          var name = document.getElementById('pdf-name');
+          if (name) name.textContent = 'indisponivel';
+          showToast('Sem resposta da API do News', 'fail', 8000);
+        });
+    }
+    _load();
+  })();
