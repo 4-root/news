@@ -402,7 +402,7 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   transition: width .1s linear;
 }
 
-/* ================= NAVBAR OFICIAL 4root.com.br ================= */
+/* ================= NAVBAR OFICIAL 4root.com.br (valores exatos academy) ================= */
 .navbar {
   position: fixed;
   top: 0; left: 0;
@@ -410,17 +410,15 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   z-index: 50;
   transition: background-color 0.5s ease, backdrop-filter 0.5s ease, transform .4s ease, border-color .5s ease;
   background-color: transparent;
+  border-bottom: 1px solid transparent;
   will-change: transform;
-  /* entrada: desce junto com a pagina */
-  animation: nav-in .7s var(--ease-out) backwards .1s;
 }
 
 .navbar.scrolled {
   background-color: rgba(5, 5, 5, 0.72);
   backdrop-filter: blur(16px) saturate(1.15);
   -webkit-backdrop-filter: blur(16px) saturate(1.15);
-  border-bottom: 1px solid rgba(0, 255, 65, 0.09);
-  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
+  border-bottom-color: rgba(0, 255, 65, 0.09);
 }
 
 .navbar.nav-hidden { transform: translateY(-100%); }
@@ -431,7 +429,7 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
+  padding: 1rem 2.5rem;
   gap: 1rem;
 }
 
@@ -444,7 +442,6 @@ body { animation: page-in .5s var(--ease-out) backwards; }
 .nav-link {
   position: relative;
   padding: 0.5rem 1rem;
-  font-family: 'Sora', system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -469,13 +466,14 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   right: 0.75rem;
   height: 1px;
   background: var(--neon);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .32s var(--ease);
 }
 
 .nav-link:hover .underline,
 .nav-link.active .underline {
-  opacity: 1;
+  transform: scaleX(1);
 }
 
 .mobile-menu-btn {
@@ -487,7 +485,8 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   cursor: pointer;
 }
 
-/* menu mobile (oficial) */
+/* menu mobile: aparencia/comportamento identicos ao academy.4root.com.br
+   (apenas fade do overlay; sem animacao extra nos links) */
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
@@ -509,8 +508,7 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   pointer-events: auto;
 }
 
-.mobile-menu-overlay > a {
-  font-family: 'Sora', system-ui, sans-serif;
+.mobile-menu-overlay a {
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -518,60 +516,9 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   transition: color 0.3s ease;
 }
 
-.mobile-menu-overlay > a:hover,
-.mobile-menu-overlay > a.active {
+.mobile-menu-overlay a:hover,
+.mobile-menu-overlay a.active {
   color: var(--neon);
-}
-
-.mobile-menu-overlay > a {
-  opacity: 0;
-  transform: translateY(16px);
-  filter: blur(8px);
-  transition: color 0.3s ease 0s,
-    opacity 0.5s ease var(--md, 0s),
-    transform 0.55s cubic-bezier(.2, 1.2, .3, 1) var(--md, 0s),
-    filter 0.5s ease var(--md, 0s);
-}
-
-.mobile-menu-overlay.open > a {
-  opacity: 1;
-  transform: none;
-  filter: blur(0);
-}
-
-.mobile-menu-overlay > a:nth-child(1) { --md: 0.05s; }
-.mobile-menu-overlay > a:nth-child(2) { --md: 0.1s; }
-.mobile-menu-overlay > a:nth-child(3) { --md: 0.15s; }
-.mobile-menu-overlay > a:nth-child(4) { --md: 0.2s; }
-
-.mobile-menu-socials {
-  display: flex;
-  gap: 0.9rem;
-  margin-top: 1.4rem;
-}
-
-.mobile-menu-socials a {
-  width: 46px;
-  height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  background: rgba(10, 10, 10, 0.6);
-  color: var(--muted);
-  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mobile-menu-socials a:hover {
-  color: var(--neon);
-  border-color: rgba(0, 255, 65, 0.45);
-  box-shadow: 0 0 16px rgba(0, 255, 65, 0.16);
-}
-
-.mobile-menu-socials svg {
-  width: 18px;
-  height: 18px;
 }
 
 /* ================= HERO OFICIAL academy (video de fundo) ================= */
@@ -665,7 +612,7 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   line-height: .95;
   letter-spacing: -.03em;
   user-select: none;
-  font-size: 3.75rem;
+  font-size: clamp(2.6rem, 8vw, 4.6rem); /* medida exata do academy.4root.com.br */
   color: var(--text);
 }
 
@@ -674,20 +621,24 @@ body { animation: page-in .5s var(--ease-out) backwards; }
 /* estrutura OFICIAL 4root.com.br (linha1 = #_4root / linha2 = news) */
 .hero-title .line-inner {
   display: block;
-  font-size: 3.75rem;
+  font-size: 0.66em;            /* proporcional, igual .hero-academy do academy */
   font-family: 'QB One', sans-serif;
-  color: #8a8a8a;   /* "news" em cinza (pedido) */
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
+  color: var(--muted);
+  margin-top: 0em;
 }
 
 .hero-title .line2-inner {
   display: flex;
   align-items: baseline;
-  font-size: 3.75rem;
   pointer-events: none;
   font-family: 'QB One', sans-serif;
   position: relative;
   width: max-content;
   letter-spacing: -0.02em;
+  white-space: nowrap;  /* igual .brand-logo do academy */
 }
 
 .hero-title .line:last-child { line-height: .7; }
@@ -933,6 +884,9 @@ body { animation: page-in .5s var(--ease-out) backwards; }
 .ws-badge.fail { color: var(--red); border-color: rgba(255,0,64,.4); background: rgba(255,0,64,.06); }
 
 .sessions-list { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+
+/* ciclos recentes: somente os 7 primeiros aparentes (pedido) */
+.sessions-list .session-chip:nth-child(n+8) { display: none; }
 
 /* session-chip = ciclo de coleta (data/hora) -> baixa o PDF */
 .session-chip {
@@ -1821,19 +1775,8 @@ a.bot-chip.bot-chip-link:hover {
   .mobile-menu-btn { display: none; }
 }
 
-/* hero-title responsivo (oficial 4root.com.br) */
-@media (min-width: 640px) {
-  .hero-title .line-inner, .hero-title .line2-inner { font-size: 4.5rem; }
-}
-
-@media (min-width: 768px) {
-  .hero-title .line-inner, .hero-title .line2-inner { font-size: 6rem; }
-}
-
-@media (min-width: 1024px) {
-  .hero-title .line-inner { font-size: 5rem; }
-  .hero-title .line2-inner { font-size: 6rem; }
-}
+/* hero-title responsivo: o clamp(2.6rem, 8vw, 4.6rem) do h1 cobre o
+   responsivo (medidas exatas do academy.4root.com.br) */
 
 @media (max-width: 1100px) {
   .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -1869,16 +1812,35 @@ a.bot-chip.bot-chip-link:hover {
   .hero-title.glitch .line-inner::after,
   .hero-title.glitch .line2-inner::before,
   .hero-title.glitch .line2-inner::after { white-space: nowrap; }
+
+  /* ---- CENTRALIZACAO TOTAL NO MOBILE (pedido) ---- */
+  .hero-content { text-align: center; }
+  .hero-status { justify-content: center; }
+  .hero-motto { justify-content: center; }
+  .hero-ctas { justify-content: center; }
+  .hero-right { align-items: center; }
+  .hero-subtitle-wrap { text-align: center; }
+  .hero-sched { justify-content: center; text-align: center; }
+  .hero-notice { display: block; text-align: center; }
+  .hero-notice .ic { display: inline-block; vertical-align: -2px; margin-right: .35rem; }
+  .stats-row, .stat-card { text-align: center; }
+  .section-label { justify-content: center; }
+  .course-body { text-align: center; align-items: center; }
+  .course-meta { justify-content: center; }
+  .cover-badge { left: 50%; right: auto; transform: translateX(-50%); }
+  .footer-grid { justify-content: center; text-align: center; }
+  .footer-brand { display: flex; flex-direction: column; align-items: center; }
+  .footer-socials { justify-content: center; }
+  .footer-bottom { justify-content: center; text-align: center; }
 }
 
 @media (max-width: 560px) {
   .hero-title { font-size: 2.5rem; }
-  .hero-title .line-inner, .hero-title .line2-inner { font-size: 3rem; }
   .news-grid { grid-template-columns: 1fr; }
   .courses-grid { grid-template-columns: 1fr; }
   .nav-inner { padding: 1rem 1.25rem; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .footer-bottom { flex-direction: column; }
+  .footer-bottom { flex-direction: column; align-items: center; }
 }
 
 @media (max-width: 620px) {
@@ -1926,6 +1888,9 @@ a.bot-chip.bot-chip-link:hover {
 
 @media (max-width: 640px) {
   .news-grid { grid-template-columns: 1fr; }
-  .export-bar { flex-direction: column; align-items: flex-start; }
+  .export-bar { flex-direction: column; align-items: center; text-align: center; }
+  .export-main { justify-content: center; }
+  .export-hint { margin: 0 auto; }
+  .sessions-list { justify-content: center; }
   .toasts { right: .8rem; bottom: .8rem; }
 }
