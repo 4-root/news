@@ -529,6 +529,39 @@
         + ' ' + pad(b.getUTCHours()) + ':' + pad(b.getUTCMinutes()));
     }
   }
+  function _pdfHref(file) {
+    return file ? API + '/export/' + encodeURIComponent(file) : '#noticias';
+  }
+
+  function renderStats(d) {
+    var set = function (id, v) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = v;
+    };
+    set('stat-articles', d.total_articles || 0);
+    set('stat-sources', d.feed_total || 0);
+    set('stat-window', (d.window_hours || 24) + 'h');
+    set('stat-cycles', (d.sessions || []).length);
+  }
+
+  function renderSched(d) {
+    var dot = document.getElementById('sched-dot');
+    var txt = document.getElementById('sched-text');
+    var foot = document.getElementById('footer-sched');
+    var s = d.scheduler || {};
+    var iv = s.interval_hours != null ? String(s.interval_hours).replace('.0', '') : '3';
+    if (dot) dot.classList.toggle('on', s.status === 'ativa');
+    if (txt) {
+      if (s.status === 'ativa') {
+        txt.innerHTML = 'Coleta autom&aacute;tica: <b class="neon-text">ativa</b> &mdash; ciclo a cada '
+          + _esc(iv) + 'h'
+          + (s.next_run ? ' &middot; pr&oacute;ximo ' + _esc(s.next_run) : '');
+      } else {
+        txt.innerHTML = 'Coleta autom&aacute;tica: <b>desativada</b>';
+      }
+    }
+    if (foot) foot.textContent = (s.status === 'ativa' ? 'ativa (' + iv + 'h)' : (s.status || '-'));
+  }
 
   function renderExport(d) {
     var btn = document.getElementById('btn-export');
@@ -791,3 +824,5 @@
     }
     _load();
   })();
+
+})();
