@@ -504,45 +504,30 @@
   }
 
   function _artDate(p) {
-    /* published ISO -> dd/mm/aaaa hh:mm (igual ao Jinja original) */
+    /* published ISO (UTC) -> dd/mm/aaaa hh:mm no fuso de Brasilia (America/Sao_Paulo) */
     p = String(p || '');
-    var d = _esc(p.slice(8, 10) + '/' + p.slice(5, 7) + '/' + p.slice(0, 4));
-    var hh = p.slice(11, 16);
-    return hh ? d + ' ' + _esc(hh) : d;
-  }
-
-  function _pdfHref(file) {
-    return file ? API + '/export/' + encodeURIComponent(file) : '#noticias';
-  }
-
-  function renderStats(d) {
-    var set = function (id, v) {
-      var el = document.getElementById(id);
-      if (el) el.textContent = v;
-    };
-    set('stat-articles', d.total_articles || 0);
-    set('stat-sources', d.feed_total || 0);
-    set('stat-window', (d.window_hours || 24) + 'h');
-    set('stat-cycles', (d.sessions || []).length);
-  }
-
-  function renderSched(d) {
-    var dot = document.getElementById('sched-dot');
-    var txt = document.getElementById('sched-text');
-    var foot = document.getElementById('footer-sched');
-    var s = d.scheduler || {};
-    var iv = s.interval_hours != null ? String(s.interval_hours).replace('.0', '') : '3';
-    if (dot) dot.classList.toggle('on', s.status === 'ativa');
-    if (txt) {
-      if (s.status === 'ativa') {
-        txt.innerHTML = 'Coleta autom&aacute;tica: <b class="neon-text">ativa</b> &mdash; ciclo a cada '
-          + _esc(iv) + 'h'
-          + (s.next_run ? ' &middot; pr&oacute;ximo ' + _esc(s.next_run) : '');
-      } else {
-        txt.innerHTML = 'Coleta autom&aacute;tica: <b>desativada</b>';
-      }
+    if (!p) return '';
+    var t = p.trim();
+    /* ISO sem offset explicito -> tratar como UTC */
+    if (t.length >= 16 && !/[zZ]$/.test(t) && !/[+-]\d{2}:\d{2}$/.test(t)) t += 'Z';
+    var d = new Date(t);
+    if (isNaN(d.getTime())) return _esc(p);
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    try {
+      var f = new Intl.DateTimeFormat('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+      });
+      var pt = {};
+      f.formatToParts(d).forEach(function (x) { pt[x.type] = x.value; });
+      return _esc(pt.day + '/' + pt.month + '/' + pt.year + ' ' + pt.hour + ':' + pt.minute);
+    } catch (e) {
+      /* fallback: Brasil = UTC-3 fixo (sem horario de verao desde 2019) */
+      var b = new Date(d.getTime() - 3 * 3600000);
+      return _esc(pad(b.getUTCDate()) + '/' + pad(b.getUTCMonth() + 1) + '/' + b.getUTCFullYear()
+        + ' ' + pad(b.getUTCHours()) + ':' + pad(b.getUTCMinutes()));
     }
-    if (foot) foot.textContent = (s.status === 'ativa' ? 'ativa (' + iv + 'h)' : (s.status || '-'));
   }
 
   function renderExport(d) {
