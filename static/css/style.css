@@ -2046,7 +2046,7 @@ a.bot-chip.bot-chip-link:hover {
 .news-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.1rem; margin-top: 0; }
 
 /* ================= RESPONSIVO ================= */
-  .hero-right { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 1.6rem; }
+  
 }
 
 @media (max-width: 900px) {
