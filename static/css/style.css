@@ -875,9 +875,10 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   padding: .6rem 0 .6rem 2.2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centra o conteudo na linha (igual academy) */
+  justify-content: center; 
   gap: 1rem;
   min-width: 0;
+  transform: translateY(-70px);
 }
 
 .hero-subtitle-wrap { position: relative; margin-top: 0; max-width: 42rem; }
