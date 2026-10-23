@@ -68,14 +68,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css?v=11">
+    <link rel="stylesheet" href="static/css/style.css?v=12">
 </head>
 <body class="grain-overlay">
     <div id="scroll-progress" aria-hidden="true"></div>
     <div id="cyber-cursor" aria-hidden="true"><div class="cursor-glitch-effect"></div></div>
     <div id="toasts" class="toasts" aria-live="polite"></div>
 
-    <!-- ===== NAVBAR OFICIAL 4root.com.br (+ News) ===== -->
+    <!-- ===== NAVBAR OFICIAL 4root.com.br (+ droplist Produtos) ===== -->
     <header class="navbar" id="navbar">
         <nav class="nav-inner">
             <a href="/" class="nav-logo-link" aria-label="#_4root news"><span class="nav-logo"><span class="nav-logo-row"><span class="font-qb text-hash">#</span><span class="font-qb text-underscore">_</span><span class="neon-text font-sora text-4">4</span><span class="font-qb text-root">root</span></span></span></a>
@@ -86,9 +86,15 @@
                 <li><a href="https://4root.com.br/#youtube" class="nav-link">YouTube<span class="underline"></span></a></li>
                 <li><a href="https://4root.com.br/#recursos" class="nav-link">Networks<span class="underline"></span></a></li>
                 <li><a href="https://4root.com.br/#desafios" class="nav-link">Desafios<span class="underline"></span></a></li>
-                <li><a href="https://academy.4root.com.br" class="nav-link">Academy<span class="underline"></span></a></li>
+                <li class="nav-drop has-active">
+                    <button type="button" class="nav-link nav-drop-btn" aria-haspopup="true">Produtos<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span class="underline"></span></button>
+                    <div class="nav-drop-menu" role="menu">
+                        <a href="https://academy.4root.com.br" role="menuitem">Academy</a>
+                        <a href="/" role="menuitem" class="active">News</a>
+                        <a href="https://cti.4root.com.br" role="menuitem">CTI</a>
+                    </div>
+                </li>
                 <li><a href="https://4root.com.br/#contato" class="nav-link">Contato<span class="underline"></span></a></li>
-                <li><a href="/" class="nav-link active">News<span class="underline"></span></a></li>
             </ul>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -109,9 +115,11 @@
         <a href="https://4root.com.br/#youtube">YouTube</a>
         <a href="https://4root.com.br/#recursos">Networks</a>
         <a href="https://4root.com.br/#desafios">Desafios</a>
+        <span class="mobile-menu-label">// produtos</span>
         <a href="https://academy.4root.com.br">Academy</a>
-        <a href="https://4root.com.br/#contato">Contato</a>
         <a href="/" class="active">News</a>
+        <a href="https://cti.4root.com.br">CTI</a>
+        <a href="https://4root.com.br/#contato">Contato</a>
     </div>
 
     <main class="page-main">
