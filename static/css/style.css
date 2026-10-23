@@ -872,12 +872,11 @@ body { animation: page-in .5s var(--ease-out) backwards; }
 .hero-left { min-width: 0; }
 
 .hero-right {
-  border-left: 1px solid var(--line);
   padding: .6rem 0 .6rem 2.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center; /* centra o conteudo na linha (igual academy) */
-  gap: 1.5rem;
+  gap: 1rem;
   min-width: 0;
 }
 
