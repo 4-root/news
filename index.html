@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#050505">
-    <title>#_4root | News - Cibersegurança</title>
+    <title>#_4root | News — Cibersegurança</title>
 
     <!-- ===== SEO / METATAGS OFICIAIS 4root.com.br (adaptadas ao news) ===== -->
     <meta name="description"
@@ -68,14 +68,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css?v=12">
+    <link rel="stylesheet" href="static/css/style.css?v=13">
 </head>
 <body class="grain-overlay">
     <div id="scroll-progress" aria-hidden="true"></div>
     <div id="cyber-cursor" aria-hidden="true"><div class="cursor-glitch-effect"></div></div>
     <div id="toasts" class="toasts" aria-live="polite"></div>
 
-    <!-- ===== NAVBAR OFICIAL 4root.com.br (+ droplist Produtos) ===== -->
+    <!-- ===== NAVBAR OFICIAL 4root.com.br (+ News) ===== -->
     <header class="navbar" id="navbar">
         <nav class="nav-inner">
             <a href="/" class="nav-logo-link" aria-label="#_4root news"><span class="nav-logo"><span class="nav-logo-row"><span class="font-qb text-hash">#</span><span class="font-qb text-underscore">_</span><span class="neon-text font-sora text-4">4</span><span class="font-qb text-root">root</span></span></span></a>
@@ -89,9 +89,9 @@
                 <li class="nav-drop has-active">
                     <button type="button" class="nav-link nav-drop-btn" aria-haspopup="true">Produtos<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span class="underline"></span></button>
                     <div class="nav-drop-menu" role="menu">
-                        <a href="https://academy.4root.com.br" role="menuitem">Academy</a>
-                        <a href="/" role="menuitem" class="active">News</a>
-                        <a href="https://cti.4root.com.br" role="menuitem">CTI</a>
+                        <a href="https://academy.4root.com.br" role="menuitem" data-text="Academy">Academy</a>
+                        <a href="/" role="menuitem" class="active" data-text="News">News</a>
+                        <a href="https://cti.4root.com.br" role="menuitem" data-text="CTI | CVE">CTI | CVE</a>
                     </div>
                 </li>
                 <li><a href="https://4root.com.br/#contato" class="nav-link">Contato<span class="underline"></span></a></li>
@@ -118,7 +118,7 @@
         <span class="mobile-menu-label">// produtos</span>
         <a href="https://academy.4root.com.br">Academy</a>
         <a href="/" class="active">News</a>
-        <a href="https://cti.4root.com.br">CTI</a>
+        <a href="https://cti.4root.com.br">CTI | CVE</a>
         <a href="https://4root.com.br/#contato">Contato</a>
     </div>
 
@@ -156,7 +156,7 @@
                         <span class="motto-bracket">]</span>
                     </div>
                     <div class="hero-ctas">
-                        <a href="#news-wide" class="cta-primary" id="btn-read" data-scroll="#news-wide">ler noticias</a>
+                        <a href="#news-wide" class="cta-primary glitch" id="btn-read" data-scroll="#news-wide" data-text="ler noticias">ler noticias</a>
                         <button onclick="runWorkflow()" class="cta-secondary" id="btn-workflow">
                             <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                             executar workflow
