@@ -831,7 +831,7 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   letter-spacing: 0.15em;
   text-transform: lowercase;
   color: var(--muted);
-  margin-top: 0em;
+  margin-top: 0.2em;
 }
 
 .hero-title .line2-inner {
