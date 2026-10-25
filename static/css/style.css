@@ -797,6 +797,10 @@ body { animation: page-in .5s var(--ease-out) backwards; }
    topo apenas no desktop com 2 colunas (>=1101px), onde a diferenca existe */
 @media (min-width: 1101px) {
   .hero-status { margin-top: min(8.75rem, 15.5vh); }
+  /* compensacao optica da coluna direita SOMENTE no desktop com 2 colunas;
+     no mobile o hero empilha e o transform deslocaria o bloco por cima do
+     conteudo da esquerda (bug do layout quebrado) */
+  .hero-right { transform: translateY(-70px); }
 }
 
 .hero-status .dot {
@@ -878,7 +882,6 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   justify-content: center; 
   gap: 1rem;
   min-width: 0;
-  transform: translateY(-70px);
 }
 
 .hero-subtitle-wrap { position: relative; margin-top: 0; max-width: 42rem; }
@@ -2046,8 +2049,6 @@ a.bot-chip.bot-chip-link:hover {
 .news-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.1rem; margin-top: 0; }
 
 /* ================= RESPONSIVO ================= */
-  
-}
 
 @media (max-width: 900px) {
   .section { padding: 3rem 0; }
@@ -2055,12 +2056,15 @@ a.bot-chip.bot-chip-link:hover {
 }
 
 @media (max-width: 767px) {
+  /* ---- CENTRALIZACAO TOTAL NO MOBILE (pedido) ---- */
+  .hero-content { text-align: center; }
+  /* lockup do titulo empilhado e centrado (#_4root / news),
+     mesma hierarquia do desktop e do 4root.com.br mobile */
   .hero-title {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: .2rem;
     letter-spacing: -0.08em;
     overflow: visible;
   }
@@ -2098,6 +2102,45 @@ a.bot-chip.bot-chip-link:hover {
   .footer-brand { display: flex; flex-direction: column; align-items: center; }
   .footer-socials { justify-content: center; }
   .footer-bottom { justify-content: center; text-align: center; }
+
+  /* ---- HERO EM COLUNA UNICA (referencia: 4root.com.br mobile) ----
+     O grid 2 colunas (1.15fr/.85fr) e oficial apenas no desktop; sem o
+     colapso abaixo de 768px o titulo ficava espremido em ~170px e os
+     stat-cards cortavam na borda direita da tela. */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    margin-top: 1.6rem;
+  }
+  .hero-right {
+    padding: 0;
+    transform: none;
+    width: 100%;
+    gap: 1.2rem;
+  }
+  .hero-subtitle-wrap {
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* CTAs empilhados e centralizados, igual ao 4root.com.br mobile */
+  .hero-ctas {
+    flex-direction: column;
+    width: min(100%, 320px);
+    margin-left: auto;
+    margin-right: auto;
+    gap: .8rem;
+  }
+  .hero-ctas .cta-primary,
+  .hero-ctas .cta-secondary {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 1.5rem;
+  }
+  .hero-stats { width: 100%; margin-top: .4rem; }
+  .hero-motto { flex-wrap: nowrap; white-space: nowrap; }
+  .hero-motto .motto-bracket { flex-shrink: 0; }
+  .hero-scroll-indicator { display: none; }
 }
 
 @media (max-width: 560px) {
