@@ -845,7 +845,7 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   white-space: nowrap;  /* igual .brand-logo do academy */
 }
 
-.hero-title .line:last-child { line-height: .7; }
+/*.hero-title .line:last-child { line-height: .7; }*/
 
 .hero-motto {
   font-size: .9rem;
