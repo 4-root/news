@@ -770,15 +770,26 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   padding: 6.5rem 1.5rem 4rem;  /* conteudo um pouco mais para cima (pedido) */
 }
 
-.hero-status, .hero-title, .hero-motto, .hero-ctas, .hero-right {
+.hero-status, .hero-title, .hero-motto, .hero-ctas {
   animation: hero-blur-in .75s var(--ease-out) backwards;
 }
 
 .hero-status { animation-delay: .05s; }
 .hero-title { animation-delay: .16s; }
 .hero-motto { animation-delay: .3s; }
-.hero-right { animation-delay: .3s; }
 .hero-ctas { animation-delay: .42s; }
+
+/* coluna direita: o CONTAINER (.hero-right) NAO anima. No desktop ele tem o
+   transform estatico translateY(-70px) (compensacao optica) e animar o pai
+   sobrescreve esse transform durante o hero-blur-in — no fim da animacao o
+   bloco inteiro (sched -> notice -> cards) saltava 70px para cima "do nada".
+   Os FILHOS animam individualmente, escalonados de cima para baixo;
+   os stat-cards ja tem fade-in-up proprio com delays (.5/.62/.74/.86) */
+.hero-sched, .hero-notice {
+  animation: fade-in-up .7s var(--ease-out) backwards;
+}
+.hero-sched { animation-delay: .35s; }
+.hero-notice { animation-delay: .45s; }
 
 .hero-status {
   margin-bottom: 2rem;
@@ -2113,7 +2124,7 @@ a.bot-chip.bot-chip-link:hover {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .animate-on-scroll { opacity: 1; transform: none; }
-  .hero-status, .hero-title, .hero-motto, .hero-ctas, .hero-right { animation: none; }
+  .hero-status, .hero-title, .hero-motto, .hero-ctas, .hero-sched, .hero-notice { animation: none; }
   .hero-video { display: none; }
   .hero-section { background: #050505; }
   html { scroll-behavior: auto; }
