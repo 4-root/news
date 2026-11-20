@@ -68,7 +68,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css?v=15">
+    <link rel="stylesheet" href="static/css/style.css?v=16">
 </head>
 <body class="grain-overlay">
     <div id="scroll-progress" aria-hidden="true"></div>
@@ -229,17 +229,6 @@
     </section>
 
     <div class="dashboard">
-        <!-- Workflow Progress -->
-        <div id="workflow-panel" class="workflow-panel" style="display:none">
-            <h3>Pipeline de Workflow</h3>
-            <div class="workflow-steps">
-                <div class="wstep" id="ws-01">01 - Coleta de Feeds</div>
-                <div class="wstep" id="ws-02">02 - Desduplica&ccedil;&atilde;o e Ranqueamento</div>
-                <div class="wstep" id="ws-03">03 - PDF do Ciclo</div>
-            </div>
-            <div id="workflow-log" class="workflow-log"></div>
-        </div>
-
         <!-- EXPORT: botao de export + ciclos recentes (acima das noticias) -->
         <section class="export-bar animate-on-scroll" id="export">
             <div class="export-main">
@@ -335,7 +324,13 @@
         </div>
     </section>
 
-
+    <!-- ===== API DO NEWS (endereco OFUSCADO) ===========================
+         A URL real NAO fica em texto puro no HTML: ela e reconstruida
+         em tempo de execucao (fragmentos -> base64 -> XOR -> inversao).
+         O JS (app.js) consome window.NEWS_API_BASE normalmente.
+         Para trocar o endereco, gere novos fragmentos com o script
+         tools/obfuscate_api.py e substitua o array _f abaixo.
+         ================================================================== -->
     <script>
     (function () {
       var _k = '#_4root';
@@ -348,6 +343,6 @@
       window.NEWS_API_BASE = _o.split('').reverse().join('');
     })();
     </script>
-    <script src="static/js/app.js?v=13"></script>
+    <script src="static/js/app.js?v=14"></script>
 </body>
 </html> 
