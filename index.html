@@ -2,8 +2,13 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TRAVA DE ZOOM MOBILE (pedido): maximum-scale + user-scalable=no bloqueiam o
+         pinch-zoom no Android/Chrome; o iOS ignora esses dois por acessibilidade,
+         entao touch-action:manipulation cobre o duplo-toque (iOS 13+) e o
+         text-size-adjust impede o inflar automatico do texto em landscape -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#050505">
+    <style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%;touch-action:manipulation}</style>
     <title>#_4root | News - Cibersegurança</title>
 
     <!-- ===== SEO / METATAGS OFICIAIS 4root.com.br (adaptadas ao news) ===== -->
@@ -270,6 +275,10 @@
                 <span class="footer-copyright">&copy; <span class="js-year">2026</span> #_4root &mdash; break <span class="neon-text">//</span> learn <span class="neon-text">//</span> share</span>
                 <span class="font-mono">news.4root.com.br &middot; coleta autom&aacute;tica <span id="footer-sched">&hellip;</span></span>
             </div>
+            <!-- COUNT VISITANTES (komarev ghpvc, pedido) -->
+            <div align="center" style="margin-top: 1.3rem;">
+                <img src="https://komarev.com/ghpvc/?username=maarckz&amp;label=Visitantes&amp;color=blueviolet&amp;style=for-the-badge" alt="Visitantes" height="28" style="max-width:100%;vertical-align:middle;" loading="lazy">
+            </div>
         </div>
     </footer>
 
@@ -318,7 +327,6 @@
         </div>
     </section>
 
-   
     <script>
     (function () {
       var _k = '#_4root';
