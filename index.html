@@ -68,7 +68,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css?v=16">
+    <link rel="stylesheet" href="static/css/style.css?v=17">
 </head>
 <body class="grain-overlay">
     <div id="scroll-progress" aria-hidden="true"></div>
@@ -166,7 +166,7 @@
             </div>
             <div class="hero-grid">
                 <div class="hero-left">
-                    <h1 class="hero-title glitch" aria-label="#_4root news">
+                    <h1 class="hero-title glitch" aria-label="#_4root briefing & news">
                         <span class="line">
                             <span class="line2-inner" data-text="#_4root">
                                 <span class="font-qb text-hash">#</span><span class="font-qb text-underscore">_</span>
@@ -175,7 +175,7 @@
                             </span>
                         </span>
                         <span class="line">
-                            <span class="line-inner" data-text="news">news</span>
+                            <span class="line-inner" data-text="Briefing & News">Briefing &amp; News</span>
                         </span>
                     </h1>
                     <div class="hero-motto">
@@ -189,10 +189,6 @@
                     </div>
                 </div>
                 <div class="hero-right">
-                    <div class="hero-subtitle-wrap" id="hero-subtitle-wrap">
-                        <p class="hero-subtitle">Coleta, filtragem e briefing di&aacute;rio de ciberseguran&ccedil;a &mdash; feeds RSS e Google News em paralelo. <b>Sem gera&ccedil;&atilde;o por IA</b>.</p>
-                        <p class="hero-proximity-text" aria-hidden="true">Coleta, filtragem e briefing diario de ciberseguranca - feeds RSS e Google News em paralelo. Sem geracao por IA. 0x726f6f74</p>
-                    </div>
                     <div class="hero-sched">
                         <span class="sched-dot off" id="sched-dot"></span>
                         <span id="sched-text">carregando status da coleta&hellip;</span>
@@ -220,6 +216,21 @@
                     </div>
                 </div>
             </div>
+
+            <!-- EXPORT: baixar pdf do ciclo + ciclos recentes (movido para o hero, pedido) -->
+            <section class="export-bar animate-on-scroll" id="export">
+                <div class="export-main">
+                    <a href="#noticias" class="btn-neon export-btn" id="btn-export">
+                        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+                        baixar pdf do ciclo
+                    </a>
+                    <p class="export-hint">Relat&oacute;rio completo com <b>todos</b> os artigos ranqueados do &uacute;ltimo ciclo &mdash; <span class="font-mono" id="pdf-name">carregando&hellip;</span></p>
+                </div>
+                <div class="export-sessions" id="sessions-wrap" hidden>
+                    <p class="hero-sessions-label">// ciclos recentes &mdash; clique na coleta para baixar o pdf</p>
+                    <div class="sessions-list" id="sessions-list"></div>
+                </div>
+            </section>
         </div>
         <a href="#news-wide" class="hero-scroll-indicator bounce-arrow" data-scroll="#news-wide" aria-label="Ir para as not&iacute;cias">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -227,23 +238,6 @@
             </svg>
         </a>
     </section>
-
-    <div class="dashboard">
-        <!-- EXPORT: botao de export + ciclos recentes (acima das noticias) -->
-        <section class="export-bar animate-on-scroll" id="export">
-            <div class="export-main">
-                <a href="#noticias" class="btn-neon export-btn" id="btn-export">
-                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-                    baixar pdf do ciclo
-                </a>
-                <p class="export-hint">Relat&oacute;rio completo com <b>todos</b> os artigos ranqueados do &uacute;ltimo ciclo &mdash; <span class="font-mono" id="pdf-name">carregando&hellip;</span></p>
-            </div>
-            <div class="export-sessions" id="sessions-wrap" hidden>
-                <p class="hero-sessions-label">// ciclos recentes &mdash; clique na coleta para baixar o pdf</p>
-                <div class="sessions-list" id="sessions-list"></div>
-            </div>
-        </section>
-    </div>
 
     <!-- Notícias — cards estilo academy.4root.com.br (seção LARGA: 4 cards por linha) -->
     <section class="section section-news" id="noticias">
@@ -324,13 +318,7 @@
         </div>
     </section>
 
-    <!-- ===== API DO NEWS (endereco OFUSCADO) ===========================
-         A URL real NAO fica em texto puro no HTML: ela e reconstruida
-         em tempo de execucao (fragmentos -> base64 -> XOR -> inversao).
-         O JS (app.js) consome window.NEWS_API_BASE normalmente.
-         Para trocar o endereco, gere novos fragmentos com o script
-         tools/obfuscate_api.py e substitua o array _f abaixo.
-         ================================================================== -->
+   
     <script>
     (function () {
       var _k = '#_4root';
@@ -343,6 +331,6 @@
       window.NEWS_API_BASE = _o.split('').reverse().join('');
     })();
     </script>
-    <script src="static/js/app.js?v=14"></script>
+    <script src="static/js/app.js?v=17"></script>
 </body>
 </html> 
