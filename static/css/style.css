@@ -1822,6 +1822,57 @@ a.bot-chip.bot-chip-link:hover {
 
 .footer-socials svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
+/* ---- contador de visitantes + redes (pedido) ----
+   Desktop: contador a ESQUERDA dos icones, na mesma linha (align center).
+   Mobile (max-767px): coluna reversa — redes em cima, contador abaixo.
+   Visual do contador = mini stat-card terminal do site: fundo --card,
+   borda neon a esquerda, mono, numero neon com glow e caret piscante */
+.footer-socials-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.footer-counter {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .55rem .85rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--neon);
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.footer-counter:hover { border-color: rgba(0,255,65,.4); box-shadow: 0 0 14px rgba(0,255,65,.15); }
+
+.footer-counter-label {
+  font-size: .6rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.footer-counter-num {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--neon);
+  text-shadow: 0 0 8px rgba(0,255,65,.45);
+  min-width: 2.5ch;
+  text-align: right;
+}
+
+.footer-counter-caret {
+  width: .48rem;
+  height: .95rem;
+  background: var(--neon);
+  opacity: .8;
+  animation: caret-blink 1s step-end infinite;
+}
+
 .footer-bottom {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
@@ -2063,6 +2114,9 @@ a.bot-chip.bot-chip-link:hover {
   .footer-grid { justify-content: center; text-align: center; }
   .footer-brand { display: flex; flex-direction: column; align-items: center; }
   .footer-socials { justify-content: center; }
+  /* mobile: redes em cima, contador ABAIXO (pedido) — coluna reversa porque
+     o DOM tem contador primeiro (para ficar a esquerda no desktop) */
+  .footer-socials-wrap { flex-direction: column-reverse; justify-content: center; gap: .9rem; }
   .footer-bottom { justify-content: center; text-align: center; }
 
   /* ---- HERO EM COLUNA UNICA (referencia: 4root.com.br mobile) ----
