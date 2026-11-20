@@ -701,22 +701,16 @@
     if (left > 0) _collectTimer = setInterval(paint, 30000);
   }
 
+  /* Painel visual de workflow REMOVIDO (pedido): o feedback do ciclo
+     agora e todo por toasts (canto da tela). O botao do hero segue
+     disparando POST /collect com cooldown de 1h. */
   window.runWorkflow = async function () {
-    var panel = document.getElementById('workflow-panel');
-    var log = document.getElementById('workflow-log');
     var btn = document.getElementById('btn-workflow');
-    if (!panel || !btn) return;
+    if (!btn) return;
 
-    panel.style.display = 'block'; log.innerHTML = '';
     btn.disabled = true;
     const original = COLLECT_BTN_HTML || btn.innerHTML;
     btn.innerHTML = 'executando...';
-    panel.scrollIntoView({behavior:'smooth', block:'center'});
-
-    for (let i = 1; i <= 3; i++) {
-      const el = document.getElementById(`ws-0${i}`);
-      if (el) el.className = 'wstep pending';
-    }
 
     try {
       const r = await fetch(API + '/collect', {method: 'POST'});
@@ -726,42 +720,25 @@
       // ---- COOLDOWN (429): so 1 coleta por hora (qualquer origem) ----
       if (r.status === 429 || (d2 && d2.rate_limited)) {
         const wait = (d2 && d2.retry_after) || 3600;
-        log.innerHTML = `<span class="ws-badge fail">COOLDOWN</span> ${d2 ? d2.message : 'aguarde'}`;
         showToast(`Última coleta há menos de 1h — o botão libera em ${_fmtWait(wait)}.`, 'warn', 9000);
-        for (let i = 1; i <= 3; i++) {
-          const el = document.getElementById(`ws-0${i}`);
-          if (el) el.className = 'wstep';
-        }
         btn.disabled = false; btn.innerHTML = original;
         armCollectCountdown(wait);
         return;
       }
 
-      (d2.step_results || []).forEach(s => {
-        const el = document.getElementById(`ws-${s.step}`);
-        if (el) {
-          el.className = 'wstep ' + (s.status === 'SUCCESS' ? 'done' : 'error');
-          el.innerHTML += ` <small>(${s.elapsed_seconds}s)</small>`;
-        }
-      });
-
       if (d2.success) {
-        log.innerHTML = `<span class="ws-badge ok">SUCESSO</span> ${d2.total_articles} artigos &middot; PDF pronto. Recarregando...`;
         showToast(`Ciclo concluido: ${d2.total_articles} artigos — PDF do ciclo pronto!`, 'ok', 6000);
         (d2.feed_errors || []).forEach((fe, i) => {
           setTimeout(() => showToast(`Fonte com erro: ${fe.name} (${fe.message || 'falhou'})`, 'fail', 9000), 400 + i * 350);
         });
         setTimeout(() => location.reload(), 2600);
       } else {
-        log.innerHTML = `<span class="ws-badge fail">ERRO</span> ${d2.message || 'Desconhecido'}`;
-        (d2.errors||[]).forEach(e => { log.innerHTML += `<br><small>${e}</small>`; });
         showToast(`Falha no ciclo: ${d2.message || 'erro desconhecido'}`, 'fail', 9000);
         (d2.errors || []).forEach((e, i) => {
           setTimeout(() => showToast(`${String(e).slice(0, 140)}`, 'fail', 9000), 400 + i * 350);
         });
       }
     } catch(e) {
-      log.innerHTML = `<span class="ws-badge fail">ERRO DE CONEXAO</span> ${e.message}`;
       showToast(`Sem resposta da API (${API || 'mesma origem'}) — verifique se o app do News está no ar.`, 'fail', 9000);
     }
     btn.disabled = false; btn.innerHTML = original;
@@ -825,4 +802,4 @@
     _load();
   })();
 
-})();
+})(); 
