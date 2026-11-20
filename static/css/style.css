@@ -767,7 +767,7 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   max-width: var(--wrap);
   margin: 0 auto;
   width: 100%;
-  padding: 7.5rem 1.5rem 4rem;
+  padding: 6.5rem 1.5rem 4rem;  /* conteudo um pouco mais para cima (pedido) */
 }
 
 .hero-status, .hero-title, .hero-motto, .hero-ctas, .hero-right {
@@ -792,11 +792,12 @@ body { animation: page-in .5s var(--ease-out) backwards; }
   color: var(--muted);
 }
 
-/* igual ao academy.4root.com.br: a linha de status começa ~1/3 da viewport.
+/* igual ao academy.4root.com.br: a linha de status começa alta na viewport,
+   porem com um respiro menor (pedido: conteudo um pouco mais para cima).
    O hero do news tem mais conteudo (stats), entao compensamos o respiro no
    topo apenas no desktop com 2 colunas (>=1101px), onde a diferenca existe */
 @media (min-width: 1101px) {
-  .hero-status { margin-top: min(8.75rem, 15.5vh); }
+  .hero-status { margin-top: min(6.5rem, 12vh); }
   /* compensacao optica da coluna direita SOMENTE no desktop com 2 colunas;
      no mobile o hero empilha e o transform deslocaria o bloco por cima do
      conteudo da esquerda (bug do layout quebrado) */
@@ -1997,7 +1998,7 @@ a.bot-chip.bot-chip-link:hover {
 
 @media (max-width: 900px) {
   .section { padding: 3rem 0; }
-  .hero-content { padding: 7rem 1.5rem 3rem; }
+  .hero-content { padding: 5.5rem 1.5rem 3rem; }  /* mobile: um pouco mais para cima (pedido) */
 }
 
 @media (max-width: 767px) {
