@@ -1837,7 +1837,7 @@ a.bot-chip.bot-chip-link:hover {
   display: flex;
   align-items: center;
   gap: .55rem;
-  padding: .55rem .85rem;
+  padding: .3rem .25rem;
   background: var(--card);
   border: 1px solid var(--line);
   border-left: 2px solid var(--neon);
