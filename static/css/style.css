@@ -1350,45 +1350,10 @@ body { animation: page-in .5s var(--ease-out) backwards; }
 
 .card-arrow .ic { width: 15px; height: 15px; }
 
-/* ================= WORKFLOW PANEL / LOADING ================= */
-.workflow-panel {
-  border: 1px solid rgba(0,255,65,.25);
-  background: var(--card);
-  border-radius: 2px;
-  padding: 1.5rem;
-}
-
-.workflow-panel h3 { font-size: .85rem; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 1rem; }
-
-.workflow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .75rem; }
-
-.wstep {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .72rem;
-  padding: .75rem .9rem;
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  color: var(--muted);
-  transition: all .3s ease;
-}
-
-.wstep.pending { border-color: rgba(0,255,65,.35); color: var(--text); }
-.wstep.done { border-color: rgba(0,255,65,.5); color: var(--neon); background: rgba(0,255,65,.05); }
-.wstep.error { border-color: rgba(255,0,64,.5); color: var(--red); background: rgba(255,0,64,.05); }
-
-.workflow-log {
-  margin-top: 1rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .72rem;
-  line-height: 1.8;
-  color: var(--muted);
-  max-height: 180px;
-  overflow-y: auto;
-}
+/* Painel visual de workflow removido a pedido — feedback do ciclo
+   agora e todo por toasts; o botao do hero segue disparando /collect. */
 
 .dashboard { max-width: var(--wrap); margin: 0 auto; padding: 2.5rem 1.5rem 2rem; }
-
-.dashboard .workflow-panel { margin-top: 0; }
 
 .empty-state {
   margin-top: 3rem;
