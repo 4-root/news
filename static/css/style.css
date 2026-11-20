@@ -1952,6 +1952,12 @@ a.bot-chip.bot-chip-link:hover {
   padding: 1.15rem 1.3rem;
   margin-top: 2rem;
   transition: border-color .4s ease, box-shadow .45s ease;
+  /* entrada junto da cascata do hero (pedido): ele mora DENTRO do hero
+     (acima da dobra), entao o animate-on-scroll disparava no primeiro frame
+     e a subida nunca aparecia — agora e um fade-in-up com delay .95s,
+     entrando depois dos stat-cards (.5/.62/.74/.86) */
+  animation: fade-in-up .8s var(--ease-out) backwards;
+  animation-delay: .95s;
 }
 
 .export-bar:hover {
@@ -2124,7 +2130,7 @@ a.bot-chip.bot-chip-link:hover {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .animate-on-scroll { opacity: 1; transform: none; }
-  .hero-status, .hero-title, .hero-motto, .hero-ctas, .hero-sched, .hero-notice { animation: none; }
+  .hero-status, .hero-title, .hero-motto, .hero-ctas, .hero-sched, .hero-notice, .export-bar { animation: none; }
   .hero-video { display: none; }
   .hero-section { background: #050505; }
   html { scroll-behavior: auto; }
