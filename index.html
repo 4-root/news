@@ -2,10 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <!-- TRAVA DE ZOOM MOBILE (pedido): maximum-scale + user-scalable=no bloqueiam o
-         pinch-zoom no Android/Chrome; o iOS ignora esses dois por acessibilidade,
-         entao touch-action:manipulation cobre o duplo-toque (iOS 13+) e o
-         text-size-adjust impede o inflar automatico do texto em landscape -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#050505">
     <style>html{-webkit-text-size-adjust:100%;text-size-adjust:100%;touch-action:manipulation}</style>
@@ -223,7 +220,7 @@
             </div>
 
             <!-- EXPORT: baixar pdf do ciclo + ciclos recentes (movido para o hero, pedido) -->
-            <section class="export-bar animate-on-scroll" id="export">
+            <section class="export-bar" id="export">
                 <div class="export-main">
                     <a href="#noticias" class="btn-neon export-btn" id="btn-export">
                         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
@@ -326,6 +323,7 @@
             <a class="bot-chip bot-chip-link" href="https://forms.gle/UeUrUa8bx36sz8ps7" target="_blank" rel="noopener noreferrer" title="Sugerir novas fontes via Google Forms">sugerir fonte <span class="neon-text">&rarr;</span> google forms</a>
         </div>
     </section>
+
 
     <script>
     (function () {
