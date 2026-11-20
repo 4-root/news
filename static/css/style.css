@@ -2145,8 +2145,12 @@ a.bot-chip.bot-chip-link:hover {
 
 @media (max-width: 560px) {
   .hero-title { font-size: 2.5rem; }
-  .news-grid { grid-template-columns: 1fr; }
-  .courses-grid { grid-template-columns: 1fr; }
+  /* ---- MOBILE: 2 noticias por linha (pedido) ----
+     mantido aqui para os viewports menores; a regra final do arquivo
+     (max-width: 640px) tambem define 2 colunas e vence por ordem de
+     origem quando ambos os blocos se aplicam. */
+  .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .courses-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .footer-bottom { flex-direction: column; align-items: center; }
 }
@@ -2195,7 +2199,23 @@ a.bot-chip.bot-chip-link:hover {
 }
 
 @media (max-width: 640px) {
-  .news-grid { grid-template-columns: 1fr; }
+  /* ---- MOBILE: 2 noticias por linha (pedido) ----
+     grid de 1 coluna substituido por 2; cards compactos abaixo para
+     o texto caber em ~48% da largura da tela. Esta regra e a ULTIMA
+     do arquivo e portanto vence as anteriores quando ambas aplicam. */
+  .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+  .section-wide { padding: 0 .8rem; margin-top: 2rem; }
+
+  /* card compacto em 2 colunas */
+  .course-card .course-body { padding: .65rem .6rem .7rem; gap: .35rem; }
+  .course-card .course-name { font-size: .78rem; line-height: 1.35; }
+  .course-card .course-desc { font-size: .6rem; line-height: 1.5; -webkit-line-clamp: 3; }
+  .course-card .course-meta { font-size: .52rem; gap: .45rem; padding-top: .4rem; flex-wrap: wrap; }
+  .course-meta .ic { width: 10px; height: 10px; }
+  .course-cover .cover-badge { font-size: .5rem; letter-spacing: .08em; padding: .15rem .4rem; bottom: .45rem; }
+  .course-card .card-arrow { width: 22px; height: 22px; top: .4rem; right: .4rem; }
+  .card-arrow .ic { width: 11px; height: 11px; }
+
   .export-bar { flex-direction: column; align-items: center; text-align: center; }
   .export-main { justify-content: center; }
   .export-hint { margin: 0 auto; }
